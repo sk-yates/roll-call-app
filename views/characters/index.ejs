@@ -7,7 +7,22 @@
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
+  
   <h1>Your characters</h1>
+  
+  <a href="/users/<%=user._id%>/characters/new">Create a new character</a>
+
+  <ul>
+    <% characters.forEach((character) => { %>
+    
+      <li> 
+        <a href="/users/<%= user._id %>/characters/<%= character._id %>">
+        <%= character.chaName %> --- <%= character.chaClass %> --- <%= character.chaBackground %> 
+        </a>
+    </li>
+    
+    <% }) %>
+  </ul>
 
 </body>
 </html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Edit: <%= character.chaName %> </title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1> Edit: <%= character.chaName %> </h1>
+    
+    <form action="/users/<%= user._id %>/characters" method="POST">
+        <label for="chaName"> Character name: </label>
+        <input type="text" name="chaName" id="chaName" value="<%= character.chaName %>">
+
+        <label for="chaClass"> Character class: </label>
+        <select id="chaClass" name="chaClass" required>
+            <option value="fighter"> Fighter </option>
+            <option value="wizard"> Wizard </option>
+            <option value="cleric"> Cleric </option>
+        </select>
+
+        <label for="chaBackground"> Character background: </label>
+        <select id="chaBackground" name="chaBackground" required>
+            <option value="folk-hero"> Folk-Hero </option>
+            <option value="merchant"> Merchant </option>
+            <option value="acolyte"> Acolyte </option>
+        </select>
+
+        <label for="chaStatPhy"> Physical: </label>
+        <select id="chaStatPhy" name="chaStatPhy" required>
+            <option value=0> 0 </option>
+            <option value=1> 1 </option>
+            <option value=2> 2 </option>
+            <option value=3> 3 </option>
+            <option value=4> 4 </option>
+            <option value=5> 5 </option>
+        </select>
+
+        <label for="chaStatStu"> Study: </label>
+        <select id="chaStatStu" name="chaStatStu" required>
+            <option value=0> 0 </option>
+            <option value=1> 1 </option>
+            <option value=2> 2 </option>
+            <option value=3> 3 </option>
+            <option value=4> 4 </option>
+            <option value=5> 5 </option>
+        </select>
+
+        <label for="chaStatCun"> Cunning: </label>
+        <select id="chaStatCun" name="chaStatCun" required>
+            <option value=0> 0 </option>
+            <option value=1> 1 </option>
+            <option value=2> 2 </option>
+            <option value=3> 3 </option>
+            <option value=4> 4 </option>
+            <option value=5> 5 </option>
+        </select>
+
+        <label for="chaStatFai"> Faith: </label>
+        <select id="chaStatFai" name="chaStatFai" required>
+            <option value=0> 0 </option>
+            <option value=1> 1 </option>
+            <option value=2> 2 </option>
+            <option value=3> 3 </option>
+            <option value=4> 4 </option>
+            <option value=5> 5 </option>
+        </select>
+
+
+        <label for="notes">Notes:</label>
+        <textarea name="notes" id="notes"></textarea>
+
+        <button type="submit"> Submit Character </button>
+
+
+    </form>
+
+</body>
+</html>

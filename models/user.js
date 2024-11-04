@@ -4,35 +4,38 @@ const characterShema = new mongoose.Schema({
   chaName: { type: String, required: true, },
   chaClass: {
     type: String,
-    enum: ['Fighter', 'Wizard', 'Cleric'],
+    enum: ['fighter', 'wizard', 'cleric'],
     required: true,
   },
   chaBackground: {
     type: String,
-    enum: ['Folk Hero', 'Merchant', 'Acolyte'],
+    enum: ['folk-hero', 'merchant', 'acolyte'],
     required: true,
   },
   chaClassTxt: {},
   chaBackgroundTxt: {},
   chaStatPhy: {
     type: Number,
-    enum: [0, 1, 2, 3, 4],
+    enum: [0, 1, 2, 3, 4, 5],
     required: true,
   },
   chaStatStu: {
     type: Number,
-    enum: [0, 1, 2, 3, 4],
+    enum: [0, 1, 2, 3, 4, 5],
     required: true,
   },
   chaStatCun: {
     type: Number,
-    enum: [0, 1, 2, 3, 4],
+    enum: [0, 1, 2, 3, 4, 5],
     required: true,
   },
   chaStatFai: {
     type: Number,
-    enum: [0, 1, 2, 3, 4],
+    enum: [0, 1, 2, 3, 4, 5],
     required: true,
+  },
+  notes: {
+    type: String,
   },
 });
 

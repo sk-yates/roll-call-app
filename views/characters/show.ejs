@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%= character.chaName %> </title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    
+    <h1> 
+        Charcter Name: <%= character.chaName %>
+    </h1>
+
+    <h2>
+        Class: <%= character.chaClass %>
+        Background: <%= character.chaBackground %>
+    </h2>
+
+    <h3> Hit-points: 30 </h3>
+    <h3> Armor score: 16 </h3>
+
+    <h3> Physical: <%= character.chaStatPhy %> </h3>
+    <h3> Study: <%= character.chaStatStu %> </h3>
+    <h3> Cunning: <%= character.chaStatCun %> </h3>
+    <h3> Faith: <%= character.chaStatFai %> </h3>
+
+    <% if (character.notes) { %>
+        <p> Notes: <%= character.notes %> </p>
+    <% } %>
+
+    <a href="/users/<%= user._id %>/characters/<%= character._id %>/edit">
+        <button> Edit character </button>
+    </a>
+
+    <form
+    action="/users/<%= user._id %>/characters/<%= character._id %>?_method=DELETE"
+    method="POST"
+    >
+    <button type="submit"> Delete character </button>
+
+    </form>
+
+</body>
+</html>
