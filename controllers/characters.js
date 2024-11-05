@@ -32,6 +32,32 @@ router.post('/', async (req, res) => {
 
 });
 
+router.get('/:characterId/edit', async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    const character = currentUser.characters.id(req.params.characterId);
+    res.render('characters/edit.ejs', {
+      character: character,
+    });
+  } catch (error) {
+    console.log(error);
+    res.redirect('/')
+  }
+});
+
+router.put('/:characterId', async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    const character = currentUser.characters.id(req.params.characterId);
+    character.set(req.body);
+    await currentUser.save();
+    res.redirect(`/users/${currentUser._id}/characters/${req.params.characterId}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/')
+  }
+});
+
 router.get('/:characterId', async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
@@ -45,6 +71,8 @@ router.get('/:characterId', async (req, res) => {
   }
 });
 
+
+
 router.delete('/:characterId', async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
@@ -57,17 +85,6 @@ router.delete('/:characterId', async (req, res) => {
   }
 });
 
-router.get('/characterId/edit', async (req, res) => {
-  try {
-    const currentUser = await User.findById(req.session.user._id);
-    const character = currentUser.characterss.id(req.params.characterId);
-    res.render('characters/edit.ejs', {
-      character: character,
-    });
-  } catch (error) {
-    console.log(error);
-    res.redirect('/')
-  }
-});
+
 
 module.exports = router;

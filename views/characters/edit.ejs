@@ -10,67 +10,69 @@
 
     <h1> Edit: <%= character.chaName %> </h1>
     
-    <form action="/users/<%= user._id %>/characters" method="POST">
+    <form action="/users/<%= user._id %>/characters/<%= character._id %>?_method=PUT" method="POST">
         <label for="chaName"> Character name: </label>
         <input type="text" name="chaName" id="chaName" value="<%= character.chaName %>">
 
         <label for="chaClass"> Character class: </label>
-        <select id="chaClass" name="chaClass" required>
-            <option value="fighter"> Fighter </option>
-            <option value="wizard"> Wizard </option>
-            <option value="cleric"> Cleric </option>
+        <select id="chaClass" name="chaClass">
+            <option value="fighter" <%= character.chaClass === 'fighter' ? 'selected' : '' %> > Fighter </option>
+            <option value="wizard" <%= character.chaClass === 'wizard' ? 'selected' : '' %> > Wizard </option>
+            <option value="cleric" <%= character.chaClass === 'cleric' ? 'selected' : '' %> > Cleric </option>
         </select>
 
         <label for="chaBackground"> Character background: </label>
-        <select id="chaBackground" name="chaBackground" required>
-            <option value="folk-hero"> Folk-Hero </option>
-            <option value="merchant"> Merchant </option>
-            <option value="acolyte"> Acolyte </option>
+        <select id="chaBackground" name="chaBackground">
+            <option value="folk-hero" <%= character.chaBackground === 'folk-hero' ? 'selected' : '' %> > Folk-Hero </option>
+            <option value="merchant" <%= character.chaBackground === 'merchant' ? 'selected' : '' %> > Merchant </option>
+            <option value="acolyte" <%= character.chaBackground === 'acolyte' ? 'selected' : '' %> > Acolyte </option>
         </select>
 
         <label for="chaStatPhy"> Physical: </label>
-        <select id="chaStatPhy" name="chaStatPhy" required>
-            <option value=0> 0 </option>
-            <option value=1> 1 </option>
-            <option value=2> 2 </option>
-            <option value=3> 3 </option>
-            <option value=4> 4 </option>
-            <option value=5> 5 </option>
+        <select id="chaStatPhy" name="chaStatPhy">
+            <option value=0 <%= character.chaStatPhy === 0 ? 'selected' : '' %> > 0 </option>
+            <option value=1 <%= character.chaStatPhy === 1 ? 'selected' : '' %> > 1 </option>
+            <option value=2 <%= character.chaStatPhy === 2 ? 'selected' : '' %> > 2 </option>
+            <option value=3 <%= character.chaStatPhy === 3 ? 'selected' : '' %> > 3 </option>
+            <option value=4 <%= character.chaStatPhy === 4 ? 'selected' : '' %> > 4 </option>
+            <option value=5 <%= character.chaStatPhy === 5 ? 'selected' : '' %> > 5 </option>
         </select>
 
         <label for="chaStatStu"> Study: </label>
-        <select id="chaStatStu" name="chaStatStu" required>
-            <option value=0> 0 </option>
-            <option value=1> 1 </option>
-            <option value=2> 2 </option>
-            <option value=3> 3 </option>
-            <option value=4> 4 </option>
-            <option value=5> 5 </option>
+        <select id="chaStatStu" name="chaStatStu">
+            <option value=0 <%= character.chaStatStu === 0 ? 'selected' : '' %> > 0 </option>
+            <option value=1 <%= character.chaStatStu === 1 ? 'selected' : '' %> > 1 </option>
+            <option value=2 <%= character.chaStatStu === 2 ? 'selected' : '' %> > 2 </option>
+            <option value=3 <%= character.chaStatStu === 3 ? 'selected' : '' %> > 3 </option>
+            <option value=4 <%= character.chaStatStu === 4 ? 'selected' : '' %> > 4 </option>
+            <option value=5 <%= character.chaStatStu === 5 ? 'selected' : '' %> > 5 </option>
         </select>
 
         <label for="chaStatCun"> Cunning: </label>
-        <select id="chaStatCun" name="chaStatCun" required>
-            <option value=0> 0 </option>
-            <option value=1> 1 </option>
-            <option value=2> 2 </option>
-            <option value=3> 3 </option>
-            <option value=4> 4 </option>
-            <option value=5> 5 </option>
+        <select id="chaStatCun" name="chaStatCun">
+            <option value=0 <%= character.chaStatCun === 0 ? 'selected' : '' %> > 0 </option>
+            <option value=1 <%= character.chaStatCun === 1 ? 'selected' : '' %> > 1 </option>
+            <option value=2 <%= character.chaStatCun === 2 ? 'selected' : '' %> > 2 </option>
+            <option value=3 <%= character.chaStatCun === 3 ? 'selected' : '' %> > 3 </option>
+            <option value=4 <%= character.chaStatCun === 4 ? 'selected' : '' %> > 4 </option>
+            <option value=5 <%= character.chaStatCun === 5 ? 'selected' : '' %> > 5 </option>
         </select>
 
         <label for="chaStatFai"> Faith: </label>
-        <select id="chaStatFai" name="chaStatFai" required>
-            <option value=0> 0 </option>
-            <option value=1> 1 </option>
-            <option value=2> 2 </option>
-            <option value=3> 3 </option>
-            <option value=4> 4 </option>
-            <option value=5> 5 </option>
+        <select id="chaStatFai" name="chaStatFai">
+            <option value=0 <%= character.chaStatFai === 0 ? 'selected' : '' %> > 0 </option>
+            <option value=1 <%= character.chaStatFai === 1 ? 'selected' : '' %> > 1 </option>
+            <option value=2 <%= character.chaStatFai === 2 ? 'selected' : '' %> > 2 </option>
+            <option value=3 <%= character.chaStatFai === 3 ? 'selected' : '' %> > 3 </option>
+            <option value=4 <%= character.chaStatFai === 4 ? 'selected' : '' %> > 4 </option>
+            <option value=5 <%= character.chaStatFai === 5 ? 'selected' : '' %> > 5 </option>
         </select>
 
+        <label for="chaBackStory">Notes:</label>
+        <textarea name="chaBackStory" id="chaBackStory" required> <%= character.chaBackStory %> </textarea>
 
         <label for="notes">Notes:</label>
-        <textarea name="notes" id="notes"></textarea>
+        <textarea name="notes" id="notes"> <%= character.notes %> </textarea>
 
         <button type="submit"> Submit Character </button>
 
