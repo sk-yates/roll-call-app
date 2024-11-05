@@ -14,9 +14,14 @@
 
     <h2>
         Class: <%= character.chaClass %>
-        Background: <%= character.chaBackground %>
     </h2>
-
+    <h3><%= character.selectedClassFeatures %></h3>
+    
+    
+    <h2>Background: <%= character.chaBackground %></h2>
+    
+    
+    
     <h3> Hit-points: 30 </h3>
     <h3> Armor score: 16 </h3>
 
@@ -25,7 +30,7 @@
     <h3> Cunning: <%= character.chaStatCun %> </h3>
     <h3> Faith: <%= character.chaStatFai %> </h3>
 
-    <p> Character story: <%= character.chaBackStory %> </p>
+    <h3> Character story: <%= character.chaBackStory %> </h3>
 
     <% if (character.notes) { %>
         <p> Notes: <%= character.notes %> </p>

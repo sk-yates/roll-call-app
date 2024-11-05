@@ -15,18 +15,24 @@
         <input type="text" name="chaName" id="chaName" value="<%= character.chaName %>">
 
         <label for="chaClass"> Character class: </label>
-        <select id="chaClass" name="chaClass">
+        <select id="chaClass" name="chaClass" disabled>
             <option value="fighter" <%= character.chaClass === 'fighter' ? 'selected' : '' %> > Fighter </option>
             <option value="wizard" <%= character.chaClass === 'wizard' ? 'selected' : '' %> > Wizard </option>
             <option value="cleric" <%= character.chaClass === 'cleric' ? 'selected' : '' %> > Cleric </option>
         </select>
 
+        <input type="hidden" name="chaClass" value="<%= character.chaClass %>">
+
+        <h3><%= character.selectedClassFeatures %></h3>
+
         <label for="chaBackground"> Character background: </label>
-        <select id="chaBackground" name="chaBackground">
+        <select id="chaBackground" name="chaBackground" disabled>
             <option value="folk-hero" <%= character.chaBackground === 'folk-hero' ? 'selected' : '' %> > Folk-Hero </option>
             <option value="merchant" <%= character.chaBackground === 'merchant' ? 'selected' : '' %> > Merchant </option>
             <option value="acolyte" <%= character.chaBackground === 'acolyte' ? 'selected' : '' %> > Acolyte </option>
         </select>
+
+        <input type="hidden" name="chaBackground" value="<%= character.chaBackground %>">
 
         <label for="chaStatPhy"> Physical: </label>
         <select id="chaStatPhy" name="chaStatPhy">

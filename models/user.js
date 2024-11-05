@@ -12,8 +12,8 @@ const characterShema = new mongoose.Schema({
     enum: ['folk-hero', 'merchant', 'acolyte'],
     required: true,
   },
-  chaClassTxt: {},
-  chaBackgroundTxt: {},
+  selectedClassFeatures: {},
+  selectedBackgroundTxt: {},
   chaStatPhy: {
     type: Number,
     enum: [0, 1, 2, 3, 4, 5],

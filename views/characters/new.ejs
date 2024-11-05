@@ -15,14 +15,21 @@
         <input type="text" name="chaName" id="chaName" required>
 
         <label for="chaClass"> Character class: </label>
-        <select id="chaClass" name="chaClass" >
+        <select id="chaClass" name="chaClass" onchange="showClassFeatures()">
+            <option value=""> --- </option>
             <option value="fighter"> Fighter </option>
             <option value="wizard"> Wizard </option>
             <option value="cleric"> Cleric </option>
         </select>
 
+        <input type="hidden" id="selectedClassFeatures" name="selectedClassFeatures"> 
+
+        <div id="classFeaturesDisplay"></div>
+        
+
         <label for="chaBackground"> Character background: </label>
         <select id="chaBackground" name="chaBackground" >
+            <option value=""> --- </option>
             <option value="folk-hero"> Folk-Hero </option>
             <option value="merchant"> Merchant </option>
             <option value="acolyte"> Acolyte </option>
@@ -30,6 +37,7 @@
 
         <label for="chaStatPhy"> Physical: </label>
         <select id="chaStatPhy" name="chaStatPhy" >
+            <option value=""> --- </option>
             <option value=0> 0 </option>
             <option value=1> 1 </option>
             <option value=2> 2 </option>
@@ -40,6 +48,7 @@
 
         <label for="chaStatStu"> Study: </label>
         <select id="chaStatStu" name="chaStatStu" >
+            <option value=""> --- </option>
             <option value=0> 0 </option>
             <option value=1> 1 </option>
             <option value=2> 2 </option>
@@ -50,6 +59,7 @@
 
         <label for="chaStatCun"> Cunning: </label>
         <select id="chaStatCun" name="chaStatCun" >
+            <option value=""> --- </option>
             <option value=0> 0 </option>
             <option value=1> 1 </option>
             <option value=2> 2 </option>
@@ -60,6 +70,7 @@
 
         <label for="chaStatFai"> Faith: </label>
         <select id="chaStatFai" name="chaStatFai" >
+            <option value=""> --- </option>
             <option value=0> 0 </option>
             <option value=1> 1 </option>
             <option value=2> 2 </option>
@@ -76,8 +87,52 @@
 
         <button type="submit"> Submit Character </button>
 
-
     </form>
+
+    <script>
+        const classData = {
+            fighter: {
+                name: "Fighter",
+                classFeature:
+                "Fighters are well-rounded martial character specializing in combat. They gain a bonus to all weapon damage equal to their highest stat. They also gain the Second Wind ability, allowing them to recover a small amount of hit points once per rest, giving them a bit of extra resilience in battle."
+            
+            },
+            wizard: {
+                name: "Wizard",
+                classFeature:
+                "Wizards are versatile spellcasters who wield powerful arcane magic. They can prepare a variety of spells each day and use Arcane Recovery to regain some spell slots after a rest, extending their magical endurance. Though physically frail, their spells make them adaptable and highly effective in many situations."
+            },
+            cleric: {
+                name: "Cleric",
+                classFeature:
+                "Clerics are divine spellcasters who balance healing, support, and combat. They choose a Divine Domain that grants unique abilities and spells, shaping their role in the party. With versatile spells and solid resilience, Clerics bring both protection and divine power to their allies."
+            
+            },
+        };
+
+        function showClassFeatures() {
+            const select = document.getElementById('chaClass');
+            const displayDiv = document.getElementById('classFeaturesDisplay');
+            const selectedClassFeaturesInput = document.getElementById('selectedClassFeatures');
+            const selectedCharacter = select.value;
+
+            if (selectedCharacter) {
+                const character = classData[selectedCharacter];
+                let html = `
+                <h3>${character.name}</h3>
+                <p>${character.classFeature}</p>
+                `;
+                displayDiv.innerHTML = html;
+
+                selectedClassFeaturesInput.value = (character.classFeature);
+            } else {
+                displayDiv.innerHTML = '';
+                selectedClassFeaturesInput.value = '';
+            }
+        };
+
+
+    </script>
 
 </body>
 </html>
