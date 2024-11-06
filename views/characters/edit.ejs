@@ -8,7 +8,7 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <h1> Edit: <%= character.chaName %> </h1>
+    <h1> Editing: <%= character.chaName %> </h1>
     
     <form action="/users/<%= user._id %>/characters/<%= character._id %>?_method=PUT" method="POST">
         <label for="chaName"> Character name: </label>
@@ -16,9 +16,9 @@
 
         <label for="chaClass"> Character class: </label>
         <select id="chaClass" name="chaClass" disabled>
-            <option value="fighter" <%= character.chaClass === 'fighter' ? 'selected' : '' %> > Fighter </option>
-            <option value="wizard" <%= character.chaClass === 'wizard' ? 'selected' : '' %> > Wizard </option>
-            <option value="cleric" <%= character.chaClass === 'cleric' ? 'selected' : '' %> > Cleric </option>
+            <option value="Fighter" <%= character.chaClass === 'Fighter' ? 'selected' : '' %> > Fighter </option>
+            <option value="Wizard" <%= character.chaClass === 'Wizard' ? 'selected' : '' %> > Wizard </option>
+            <option value="Cleric" <%= character.chaClass === 'Cleric' ? 'selected' : '' %> > Cleric </option>
         </select>
 
         <input type="hidden" name="chaClass" value="<%= character.chaClass %>">
@@ -27,12 +27,14 @@
 
         <label for="chaBackground"> Character background: </label>
         <select id="chaBackground" name="chaBackground" disabled>
-            <option value="folk-hero" <%= character.chaBackground === 'folk-hero' ? 'selected' : '' %> > Folk-Hero </option>
-            <option value="merchant" <%= character.chaBackground === 'merchant' ? 'selected' : '' %> > Merchant </option>
-            <option value="acolyte" <%= character.chaBackground === 'acolyte' ? 'selected' : '' %> > Acolyte </option>
+            <option value="Commoner" <%= character.chaBackground === 'Commoner' ? 'selected' : '' %> > Commoner </option>
+            <option value="Merchant" <%= character.chaBackground === 'Merchant' ? 'selected' : '' %> > Merchant </option>
+            <option value="Acolyte" <%= character.chaBackground === 'Acolyte' ? 'selected' : '' %> > Acolyte </option>
         </select>
 
         <input type="hidden" name="chaBackground" value="<%= character.chaBackground %>">
+
+        <h3><%= character.selectedBackgroundTxt %></h3>
 
         <label for="chaStatPhy"> Physical: </label>
         <select id="chaStatPhy" name="chaStatPhy">

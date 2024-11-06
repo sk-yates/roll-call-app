@@ -4,12 +4,12 @@ const characterShema = new mongoose.Schema({
   chaName: { type: String, required: true, },
   chaClass: {
     type: String,
-    enum: ['fighter', 'wizard', 'cleric'],
+    enum: ['Fighter', 'Wizard', 'Cleric'],
     required: true,
   },
   chaBackground: {
     type: String,
-    enum: ['folk-hero', 'merchant', 'acolyte'],
+    enum: ['Commoner', 'Merchant', 'Acolyte'],
     required: true,
   },
   selectedClassFeatures: {},
