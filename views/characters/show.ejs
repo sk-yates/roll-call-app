@@ -4,78 +4,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/show.css" />
     <title>
         <%= character.chaName %>
     </title>
 </head>
 
 <body>
+
     <%- include('../partials/_navbar.ejs') %>
 
-        <h1>
-            Charcter Name: <%= character.chaName %>
-        </h1>
+        <div class="show-body">
 
-        <div>
-            <h2>
-                <%= character.chaClass %>
-            </h2>
-            <h3>
-                <%= character.selectedClassFeatures %>
-            </h3>
-        </div>
+            <div class="show-header">
+                <h1>
+                    <%= character.chaName %>
+                </h1>
 
+                <h2>
+                    <%= character.chaClass %>
+                </h2>
 
-        <div>
-            <h2>
-                <%= character.chaBackground %>
-            </h2>
-            <h3>
-                <%= character.selectedBackgroundTxt %>
-            </h3>
-        </div>
+                <h2>
+                    <%= character.chaBackground %>
+                </h2>
+            </div>
 
+            <div class="hp-ac-container">
+                <div class="hitpoints-container">
+                    <h3> Hit-points: 30 </h3>
+                </div>
 
+                <div class="ac-container">
+                    <h3> Armor score: 16 </h3>
+                </div>
+            </div>
 
-        <div>
-            <h3> Hit-points: 30 </h3>
-        </div>
+            <div class="stats-container">
+                <h3> Physical: <%= character.chaStatPhy %>
+                </h3>
+                <h3> Study: <%= character.chaStatStu %>
+                </h3>
+                <h3> Cunning: <%= character.chaStatCun %>
+                </h3>
+                <h3> Faith: <%= character.chaStatFai %>
+                </h3>
+            </div>
 
-        <div>
-            <h3> Armor score: 16 </h3>
-        </div>
-
-        <div>
-            <h3> Physical: <%= character.chaStatPhy %>
-            </h3>
-            <h3> Study: <%= character.chaStatStu %>
-            </h3>
-            <h3> Cunning: <%= character.chaStatCun %>
-            </h3>
-            <h3> Faith: <%= character.chaStatFai %>
-            </h3>
-        </div>
-
-        <h3>
-            <%= character.chaBackStory %>
-        </h3>
-
-        <div>
-            <% if (character.notes) { %>
-                <p> Notes: <%= character.notes %>
+            <div class="cha-class-container">
+                <h3> Class details: </h3>
+                <p>
+                    <%= character.selectedClassFeatures %>
                 </p>
-                <% } %>
+
+            </div>
+
+
+            <div class="cha-background-container">
+                <h3> Background details: </h3>
+                <p>
+                    <%= character.selectedBackgroundTxt %>
+                </p>
+
+            </div>
+
+
+            <div class="cha-backstory-container">
+                <h3>
+                    Backstory:
+                </h3>
+
+                <p>
+                    <%= character.chaBackStory %>
+                </p>
+
+            </div>
+
+            <% if (character.notes) { %>
+                <div class="cha-notes-container">
+
+                    <h3>
+                        Notes:
+                    </h3>
+
+                    <p>
+                        <%= character.notes %>
+                    </p>
+                    <% } %>
+                </div>
+
+                <div class="show-button-container">
+                    <div class="show-buttons">
+                        <a class="authlink" href="/users/<%= user._id %>/characters">
+                            <button> Your Characters </button>
+                        </a>
+
+                        <a href="/users/<%= user._id %>/characters/<%= character._id %>/edit">
+                            <button> Edit character </button>
+                        </a>
+
+                        <form action="/users/<%= user._id %>/characters/<%= character._id %>?_method=DELETE"
+                            method="POST">
+                            <button class="delete-button" type="submit"> Delete character </button>
+                        </form>
+                    </div>
+                </div>
         </div>
-
-        <a href="/users/<%= user._id %>/characters/<%= character._id %>/edit">
-            <button> Edit character </button>
-        </a>
-
-        <form action="/users/<%= user._id %>/characters/<%= character._id %>?_method=DELETE" method="POST">
-            <button type="submit"> Delete character </button>
-
-        </form>
 
 </body>
 

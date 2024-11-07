@@ -1,183 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/new.css" />
     <title>Create a character</title>
 </head>
+
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <h1>Create a new character</h1>
-    
-    <form action="/users/<%= user._id %>/characters" method="POST">
-        <label for="chaName"> Character name: </label>
-        <input type="text" name="chaName" id="chaName" required>
+        <h1>Create a new character</h1>
+        <div class="new-body">
+            <form action="/users/<%= user._id %>/characters" method="POST">
+                <label for="chaName"> Character name: </label>
+                <input type="text" name="chaName" id="chaName" required>
 
-        <label for="chaClass"> Character class: </label>
-        <select id="chaClass" name="chaClass" onchange="showClassFeatures()" required>
-            <option value=""> --- </option>
-            <option value="Fighter"> Fighter </option>
-            <option value="Wizard"> Wizard </option>
-            <option value="Cleric"> Cleric </option>
-        </select>
+                <label for="chaClass"> Character class: </label>
+                <select id="chaClass" name="chaClass" onchange="showClassFeatures()" required>
+                    <option value=""> --- </option>
+                    <option value="Fighter"> Fighter </option>
+                    <option value="Wizard"> Wizard </option>
+                    <option value="Cleric"> Cleric </option>
+                </select>
 
-        <input type="hidden" id="selectedClassFeatures" name="selectedClassFeatures"> 
+                <input type="hidden" id="selectedClassFeatures" name="selectedClassFeatures">
 
-        <div id="classFeaturesDisplay"></div>
-        
-
-        <label for="chaBackground"> Character background: </label>
-        <select id="chaBackground" name="chaBackground" onchange="showBackgroundFeatures()" required>
-            <option value=""> --- </option>
-            <option value="Commoner"> Commoner </option>
-            <option value="Merchant"> Merchant </option>
-            <option value="Acolyte"> Acolyte </option>
-        </select>
-
-        <input type="hidden" id="selectedBackgroundTxt" name="selectedBackgroundTxt"> 
-
-        <div id="backgroundFeaturesDisplay"></div>
-
-        <label for="chaStatPhy"> Physical: </label>
-        <select id="chaStatPhy" name="chaStatPhy" required>
-            <option value=""> --- </option>
-            <option value=0> 0 </option>
-            <option value=1> 1 </option>
-            <option value=2> 2 </option>
-            <option value=3> 3 </option>
-            <option value=4> 4 </option>
-            <option value=5> 5 </option>
-        </select>
-
-        <label for="chaStatStu"> Study: </label>
-        <select id="chaStatStu" name="chaStatStu" required>
-            <option value=""> --- </option>
-            <option value=0> 0 </option>
-            <option value=1> 1 </option>
-            <option value=2> 2 </option>
-            <option value=3> 3 </option>
-            <option value=4> 4 </option>
-            <option value=5> 5 </option>
-        </select>
-
-        <label for="chaStatCun"> Cunning: </label>
-        <select id="chaStatCun" name="chaStatCun" required>
-            <option value=""> --- </option>
-            <option value=0> 0 </option>
-            <option value=1> 1 </option>
-            <option value=2> 2 </option>
-            <option value=3> 3 </option>
-            <option value=4> 4 </option>
-            <option value=5> 5 </option>
-        </select>
-
-        <label for="chaStatFai"> Faith: </label>
-        <select id="chaStatFai" name="chaStatFai" required>
-            <option value=""> --- </option>
-            <option value=0> 0 </option>
-            <option value=1> 1 </option>
-            <option value=2> 2 </option>
-            <option value=3> 3 </option>
-            <option value=4> 4 </option>
-            <option value=5> 5 </option>
-        </select>
-
-        <label for="chaBackStory"> Character story: </label>
-        <textarea name="chaBackStory" id="chaBackStory" required></textarea>
-
-        <label for="notes">Notes:</label>
-        <textarea name="notes" id="notes"></textarea>
-
-        <button type="submit"> Submit Character </button>
-
-    </form>
-
-    <script>
-        const classData = {
-            "Fighter": {
-                name: "Fighter",
-                classFeature:
-                "Fighters are well-rounded martial character specializing in combat. They gain a bonus to all weapon damage equal to their highest stat. They also gain the Second Wind ability, allowing them to recover a small amount of hit points once per rest, giving them a bit of extra resilience in battle."
-            
-            },
-            "Wizard": {
-                name: "Wizard",
-                classFeature:
-                "Wizards are versatile spellcasters who wield powerful arcane magic. They can prepare a variety of spells each day and use Arcane Recovery to regain some spell slots after a rest, extending their magical endurance. Though physically frail, their spells make them adaptable and highly effective in many situations."
-            },
-            "Cleric": {
-                name: "Cleric",
-                classFeature:
-                "Clerics are divine spellcasters who balance healing, support, and combat. They choose a Divine Domain that grants unique abilities and spells, shaping their role in the party. With versatile spells and solid resilience, Clerics bring both protection and divine power to their allies."
-            
-            },
-        }; 
-        
-        const backgroundData = {
-            "Commoner": {
-                name: "Commoner",
-                backGrdFeature:
-                "You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere."
-            },
-            "Merchant": {
-                name: "Merchant",
-                backGrdFeature:
-                "You are a member of an artisan's guild, skilled in a particular field and closely associated with other artisans. You are a well-established part of the mercantile world, freed by talent and wealth from the constraints of a feudal social order."
-            },
-            "Acolyte": {
-                name: "Acolyte",
-                backGrdFeature:
-                "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine."
-            },
-
-        };
+                <div id="classFeaturesDisplay"></div>
 
 
-        function showClassFeatures() {
-            const select = document.getElementById('chaClass');
-            const displayDiv = document.getElementById('classFeaturesDisplay');
-            const selectedClassFeaturesInput = document.getElementById('selectedClassFeatures');
-            const selectedCharacter = select.value;
+                <label for="chaBackground"> Character background: </label>
+                <select id="chaBackground" name="chaBackground" onchange="showBackgroundFeatures()" required>
+                    <option value=""> --- </option>
+                    <option value="Commoner"> Commoner </option>
+                    <option value="Merchant"> Merchant </option>
+                    <option value="Acolyte"> Acolyte </option>
+                </select>
 
-            if (selectedCharacter) {
-                const character = classData[selectedCharacter];
-                let html = `
+                <input type="hidden" id="selectedBackgroundTxt" name="selectedBackgroundTxt">
+
+                <div id="backgroundFeaturesDisplay"></div>
+
+                <div class="cha-stat-display-container">
+                    <label for="chaStatPhy"> Physical: </label>
+                    <select id="chaStatPhy" name="chaStatPhy" required>
+                        <option value=""> --- </option>
+                        <option value=0> 0 </option>
+                        <option value=1> 1 </option>
+                        <option value=2> 2 </option>
+                        <option value=3> 3 </option>
+                        <option value=4> 4 </option>
+                        <option value=5> 5 </option>
+                    </select>
+
+                    <label for="chaStatStu"> Study: </label>
+                    <select id="chaStatStu" name="chaStatStu" required>
+                        <option value=""> --- </option>
+                        <option value=0> 0 </option>
+                        <option value=1> 1 </option>
+                        <option value=2> 2 </option>
+                        <option value=3> 3 </option>
+                        <option value=4> 4 </option>
+                        <option value=5> 5 </option>
+                    </select>
+
+                    <label for="chaStatCun"> Cunning: </label>
+                    <select id="chaStatCun" name="chaStatCun" required>
+                        <option value=""> --- </option>
+                        <option value=0> 0 </option>
+                        <option value=1> 1 </option>
+                        <option value=2> 2 </option>
+                        <option value=3> 3 </option>
+                        <option value=4> 4 </option>
+                        <option value=5> 5 </option>
+                    </select>
+
+                    <label for="chaStatFai"> Faith: </label>
+                    <select id="chaStatFai" name="chaStatFai" required>
+                        <option value=""> --- </option>
+                        <option value=0> 0 </option>
+                        <option value=1> 1 </option>
+                        <option value=2> 2 </option>
+                        <option value=3> 3 </option>
+                        <option value=4> 4 </option>
+                        <option value=5> 5 </option>
+                    </select>
+                </div>
+
+                
+                <label for="chaBackStory"> Character story: </label>
+                <textarea class="cha-bs-textarea" name="chaBackStory" id="chaBackStory" required></textarea>
+
+                <label for="notes">Notes:</label>
+                <textarea class="cha-notes-textarea" name="notes" id="notes"></textarea>
+
+                <button type="submit"> Submit Character </button>
+
+            </form>
+        </div>
+
+        <script>
+            const classData = {
+                "Fighter": {
+                    name: "Fighter",
+                    classFeature:
+                        "Fighters are well-rounded martial character specializing in combat. They gain a bonus to all weapon damage equal to their highest stat. They also gain the Second Wind ability, allowing them to recover a small amount of hit points once per rest, giving them a bit of extra resilience in battle."
+
+                },
+                "Wizard": {
+                    name: "Wizard",
+                    classFeature:
+                        "Wizards are versatile spellcasters who wield powerful arcane magic. They can prepare a variety of spells each day and use Arcane Recovery to regain some spell slots after a rest, extending their magical endurance. Though physically frail, their spells make them adaptable and highly effective in many situations."
+                },
+                "Cleric": {
+                    name: "Cleric",
+                    classFeature:
+                        "Clerics are divine spellcasters who balance healing, support, and combat. They choose a Divine Domain that grants unique abilities and spells, shaping their role in the party. With versatile spells and solid resilience, Clerics bring both protection and divine power to their allies."
+
+                },
+            };
+
+            const backgroundData = {
+                "Commoner": {
+                    name: "Commoner",
+                    backGrdFeature:
+                        "You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere."
+                },
+                "Merchant": {
+                    name: "Merchant",
+                    backGrdFeature:
+                        "You are a member of an artisan's guild, skilled in a particular field and closely associated with other artisans. You are a well-established part of the mercantile world, freed by talent and wealth from the constraints of a feudal social order."
+                },
+                "Acolyte": {
+                    name: "Acolyte",
+                    backGrdFeature:
+                        "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine."
+                },
+
+            };
+
+
+            function showClassFeatures() {
+                const select = document.getElementById('chaClass');
+                const displayDiv = document.getElementById('classFeaturesDisplay');
+                const selectedClassFeaturesInput = document.getElementById('selectedClassFeatures');
+                const selectedCharacter = select.value;
+
+                if (selectedCharacter) {
+                    const character = classData[selectedCharacter];
+                    let html = `
                 <h3>${character.name}</h3>
                 <p>${character.classFeature}</p>
                 `;
-                displayDiv.innerHTML = html;
+                    displayDiv.innerHTML = html;
 
-                selectedClassFeaturesInput.value = (character.classFeature);
-            } else {
-                displayDiv.innerHTML = '';
-                selectedClassFeaturesInput.value = '';
-            }
-        };
+                    selectedClassFeaturesInput.value = (character.classFeature);
+                } else {
+                    displayDiv.innerHTML = '';
+                    selectedClassFeaturesInput.value = '';
+                }
+            };
 
-       function showBackgroundFeatures() {
-        const select = document.getElementById('chaBackground');
-        const displayDiv = document.getElementById('backgroundFeaturesDisplay');
-        const selectedBackgroundTxtInput = document.getElementById('selectedBackgroundTxt');
-        const selectedCharacter = select.value;
+            function showBackgroundFeatures() {
+                const select = document.getElementById('chaBackground');
+                const displayDiv = document.getElementById('backgroundFeaturesDisplay');
+                const selectedBackgroundTxtInput = document.getElementById('selectedBackgroundTxt');
+                const selectedCharacter = select.value;
 
-        if (selectedCharacter) {
-            const character = backgroundData[selectedCharacter];
-            let html = `
+                if (selectedCharacter) {
+                    const character = backgroundData[selectedCharacter];
+                    let html = `
             <h3>${character.name}</h3>
                 <p>${character.backGrdFeature}</p>
                 `;
-                displayDiv.innerHTML = html;
+                    displayDiv.innerHTML = html;
 
-                selectedBackgroundTxtInput.value = (character.backGrdFeature);
-            } else {
-                displayDiv.innerHTML = '';
-                selectedBackgroundTxtInput.value = '';
-            }
-       };
+                    selectedBackgroundTxtInput.value = (character.backGrdFeature);
+                } else {
+                    displayDiv.innerHTML = '';
+                    selectedBackgroundTxtInput.value = '';
+                }
+            };
 
-    </script>
+        </script>
 
 </body>
+
 </html>

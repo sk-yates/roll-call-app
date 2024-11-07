@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+/* ----------------------------- styling: index.ejs ----------------------------- */
+
 body {
     font-family: 'Poppins', sans-serif;
     display: flex;
@@ -14,6 +16,7 @@ body {
     color: black;
     font-size: 5.6em;
     margin: -160px 20px 0 20px;
+    justify-content: center;
 }
 
 .subheader {
@@ -25,7 +28,7 @@ body {
 .index-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     height: 100%;
 }
@@ -68,3 +71,103 @@ body {
 .signup-link:hover {
     background-color: #ffd700;
 }
+
+/* ----------------------------- styling: sign-up.ejs/sign-in.ejs ----------------------------- */
+
+.signin-container,
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+}
+
+h1 {
+    color: #000000;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 20em;
+    height: 50%;
+    border: 4px;
+    padding: 30px 400px 20px 400px;
+    border-radius: 10px 10px 10px 10px;
+    color: black;
+    font-weight: bold;
+}
+
+input {
+    border: 3px solid #000000;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #000000;
+    color: white;
+}
+
+button {
+    padding: 10px;
+    background-color: #debd00;
+    color: black;
+    border-radius: 30px;
+    border: none;
+    margin: 15px 0;
+    font-size: 1.3em;
+}
+
+button:hover {
+    background-color: #ffd700;
+}
+
+/* ----------------------------- styling: character/index.ejs ----------------------------- */
+
+.cha-index-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cha-index-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 20px;
+    width: 90%;
+}
+
+ul {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+ul a {
+    text-decoration: none;
+    color: white;
+    width: 50%;
+    background-color: #000000;
+    border-radius: 20px;
+    padding: 15px 150px;
+    margin: 15px 0;
+    font-weight: bold;
+    text-align: auto;
+    display: block;
+
+}
+
+ul a:hover {
+    background-color: #ffd700;
+    color: black;
+}
+
+/* ----------------------------- styling: new/edit.ejs ----------------------------- */
+

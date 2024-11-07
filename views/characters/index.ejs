@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/style.css" />
   <title>Character Vault</title>
 </head>
+
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  
-  <h1>Your characters</h1>
-  
-  <a href="/users/<%=user._id%>/characters/new">Create a new character</a>
 
-  <ul>
-    <% characters.forEach((character) => { %>
-    
-      <li> 
-        <a href="/users/<%= user._id %>/characters/<%= character._id %>">
-        <%= character.chaName %> --- <%= character.chaClass %> --- <%= character.chaBackground %> 
-        </a>
-    </li>
-    
-    <% }) %>
-  </ul>
+    <div class="cha-index-body">
+
+      <div class="cha-index-header">
+
+        <h1>Your characters</h1>
+
+
+
+      </div>
+
+      <ul>
+        <% characters.forEach((character)=> { %>
+
+          <li>
+            <a class="view-character-button" href="/users/<%= user._id %>/characters/<%= character._id %>">
+              <%= character.chaName %> --- <%= character.chaClass %> --- <%= character.chaBackground %>
+            </a>
+          </li>
+
+          <% }) %>
+      </ul>
+
+      <a class="add-cha-button" href="/users/<%=user._id%>/characters/new"><button> Add a new character </button></a>
+
+    </div>
 
 </body>
+
 </html>
