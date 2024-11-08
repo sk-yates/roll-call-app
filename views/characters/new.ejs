@@ -11,7 +11,7 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-        <h1>Create a new character</h1>
+        <div class="new-header"><h1>Create a new character</h1></div>
         <div class="new-body">
             <form action="/users/<%= user._id %>/characters" method="POST">
                 <label for="chaName"> Character name: </label>
