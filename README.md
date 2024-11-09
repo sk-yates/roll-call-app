@@ -33,7 +33,7 @@ While the current state of this app is a heavily simplified MVP to serve as a pr
 
 The current MVP state for the app is available at the link below: 
 
-> ### [Roll-Call Deploy link]()
+> ### [Roll-Call Deploy link](https://roll-call-rpg-companion-b6fb2155b38c.herokuapp.com/)
 
 
 ### Current character creation functionality
